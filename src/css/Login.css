@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.Login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 450px;
+    width: 350px;
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.306);
+    border-radius: 20px;
+    
+}
+.Login h1 {
+    flex: 1;
+    color: #01071f;
+    margin-top: 20px;
+    
+}
+.Login form {
+    flex: 5;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    padding-bottom: 20px;
+}
+.Login label {
+    color: #01071f;
+    font-weight: bold;
+}
+.Login input, .Login select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;   
+    border: #007bff 2px solid; 
+}
+.Login button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    grid-column: 1 / span 2;
+    width: 80%;
+    margin: 0 auto;
+    vertical-align: middle;
+    border-radius: 40px;
+}
+.Login button:hover {
+    background-color: #0056b3;
+}
+.Login input[type="text"] {
+    width: auto;
+    margin-left: 0;
+    margin-right: 10px;
+    vertical-align: middle;
+    border-radius: 40px;
+}
+.Login select {     
+    width: auto;
+    margin-left: 0;
+    margin-right: 10px;
+    vertical-align: middle;
+    border-radius: 40px;
+
+}
+
+.Login input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
+    display: block;
+}
+.Login select option:checked {
+    background-color: #007bff;
+    color: white;
+}
+.Login .checkboxLabel {
+    grid-column: 1 / span 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
