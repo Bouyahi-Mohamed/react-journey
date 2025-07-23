@@ -44,7 +44,7 @@
     width: 100%;   
     border: #007bff 2px solid; 
 }
-.Login button {
+.active{
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
@@ -56,8 +56,21 @@
     vertical-align: middle;
     border-radius: 40px;
 }
-.Login button:hover {
+.active:hover {
     background-color: #0056b3;
+}
+.inactive {
+    padding: 10px 20px;
+    background-color: #1e2022;
+    color: white;
+    border: none;
+    cursor: pointer;
+    grid-column: 1 / span 2;
+    width: 80%;
+    margin: 0 auto;
+    vertical-align: middle;
+    border-radius: 40px;
+    cursor: not-allowed;
 }
 .Login input[type="text"] {
     width: auto;

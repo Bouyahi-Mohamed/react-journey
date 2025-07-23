@@ -1,6 +1,6 @@
 import '../../css/Login.css';
 import { useState } from 'react';
-function Login() {
+function Login({showPopup, setShowPopup}) {
     let [formData, setFormData] = useState({
         username: '',
         phone: '',
@@ -11,7 +11,25 @@ function Login() {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
+        if (!formData.username || !formData.phone || !formData.age) {
+            setShowPopup({ visible: true, message: 'Please fill in all fields.' , className: 'error' });
+            return;
+        }
+        if (isNaN(formData.age) || isNaN(formData.phone)) {
+            setShowPopup({ visible: true, message: 'Age and Phone must be numbers.', className: 'error' });
+            return;
+        }
+        if (formData.age < 18 || formData.age > 65) {
+            setShowPopup({ visible: true, message: 'Age must be between 18 and 65.', className: 'error' });
+            return;
+        }
+        if (formData.phone.length !== 8) {
+            setShowPopup({ visible: true, message: 'Phone must be 8 digits long.', className: 'error' });
+            return;
+        }
+
+        // Here you can add logic to handle the form submission, like sending data to an API
+        setShowPopup({ visible: true, message: 'Form submitted successfully!', className: 'success' });
     };
 
     return (
@@ -51,7 +69,7 @@ function Login() {
                     <option value="5000">5000</option>
                 </select>
 
-            <button type="submit" onClick={handleFormSubmit}>Login</button>
+            <button className={formData.username && formData.phone && formData.age ? 'active' : 'inactive'} type="submit" disabled={!(formData.username && formData.phone && formData.age)} onClick={handleFormSubmit}>Login</button>
         </form>
 
         </div>

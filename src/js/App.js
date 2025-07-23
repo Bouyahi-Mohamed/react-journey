@@ -1,10 +1,18 @@
 import '../css/App.css';  
 import Login from './components/Login';
-import '../css/Login.css';
+import MessagePopup from './components/MessagePopup';
+import { useState } from 'react';
 function App() {
+    const [showPopup, setShowPopup] = useState({
+                                                className: '',
+                                                visible: false,
+                                                message: ''
+                                              });
+
   return (
     <div className="App">
-      <Login />
+      {showPopup.visible && <MessagePopup showPopup={showPopup} setShowPopup={setShowPopup} />}
+      <Login showPopup={showPopup} setShowPopup={setShowPopup} />
     </div>
   );
 }
