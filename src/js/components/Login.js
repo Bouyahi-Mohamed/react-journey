@@ -61,12 +61,12 @@ function Login({showPopup, setShowPopup}) {
                 Salary:
             </label>
                 <select name="salary" value={formData.salary} onChange={(e) => setFormData({ ...formData, salary: e.target.value })}>
-                    <option value="0">0</option>
-                    <option value="1000">1000</option>
-                    <option value="2000">2000</option>
-                    <option value="3000">3000</option>
-                    <option value="4000">4000</option>
-                    <option value="5000">5000</option>
+                    <option >less than 500$ </option>
+                    <option >between 500 and 1000$</option>
+                    <option>between 1000 and 2000$</option>
+                    <option >between 2000 and 3000$</option>
+                    <option >between 3000 and 4000$</option>
+                    <option >more than 4000$</option>
                 </select>
 
             <button className={formData.username && formData.phone && formData.age ? 'active' : 'inactive'} type="submit" disabled={!(formData.username && formData.phone && formData.age)} onClick={handleFormSubmit}>Login</button>
