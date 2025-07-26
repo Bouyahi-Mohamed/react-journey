@@ -1,8 +1,9 @@
-import '../../css/Login.css';
+import '../../../css/Login.css';
 import { useState } from 'react';
+import InputComp from './InputComponent.js'
 function Login({showPopup, setShowPopup}) {
     let [formData, setFormData] = useState({
-        username: '',
+        name: '',
         phone: '',
         age: '',
         employee: false,
@@ -11,7 +12,8 @@ function Login({showPopup, setShowPopup}) {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        if (!formData.username || !formData.phone || !formData.age) {
+// this handle error 
+        if (!formData.name || !formData.phone || !formData.age) {
             setShowPopup({ visible: true, message: 'Please fill in all fields.' , className: 'error' });
             return;
         }
@@ -28,29 +30,41 @@ function Login({showPopup, setShowPopup}) {
             return;
         }
 
-        // Here you can add logic to handle the form submission, like sending data to an API
+// this handle submit successfully
         setShowPopup({ visible: true, message: 'Form submitted successfully!', className: 'success' });
     };
+
+    function handleValue(value, {nameInput}) 
+    {  
+        setFormData({ ...formData, [nameInput]: value });
+    }
 
     return (
         <div className="Login">
         <h1>requiesting a load</h1>
         <form>
-            <label>
-                Username:
-            </label>
-                <input type="text" name="username" value={formData.username} onChange={(e) => setFormData({ ...formData, username: e.target.value })} />
+{/* this first InputComponent reusable for name */}
+           <InputComp 
+                nameInput = {"name"}
+                valueInput= {formData.name}
+                handleValue= {handleValue}
+            />
+            
+{/* this first InputComponent reusable for name */}
+           <InputComp 
+                nameInput = {"phone"}
+                valueInput= {formData.phone}
+                handleValue= {handleValue}
+            />
 
 
-            <label>
-                Phone:
-            </label>
-                <input type="text" name="phone" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} />
+{/* this first InputComponent reusable for name */}
+           <InputComp 
+                nameInput = {"age"}
+                valueInput= {formData.age}
+                handleValue= {handleValue}
+            />
 
-            <label>
-                Age:
-            </label>
-                <input type="text" name="age" value={formData.age} onChange={(e) => setFormData({ ...formData, age: e.target.value })} />
 
             <label className="checkboxLabel">
                 are you an employee?
@@ -69,7 +83,7 @@ function Login({showPopup, setShowPopup}) {
                     <option >more than 4000$</option>
                 </select>
 
-            <button className={formData.username && formData.phone && formData.age ? 'active' : 'inactive'} type="submit" disabled={!(formData.username && formData.phone && formData.age)} onClick={handleFormSubmit}>Login</button>
+            <button className={formData.name && formData.phone && formData.age ? 'active' : 'inactive'} type="submit" disabled={!(formData.name && formData.phone && formData.age)} onClick={handleFormSubmit}>Login</button>
         </form>
 
         </div>
