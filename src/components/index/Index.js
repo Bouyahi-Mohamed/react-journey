@@ -1,11 +1,11 @@
-import Header from './Header-Amazon.js';
-import ProductList from './ProductList.js';
-
+import Header from './Header-Amazon';
+import ProductList from './ProductList';
+import products from '../../data/Produits.js';
 export default function Index() {
   return (
     <div>
       <Header />
-      <ProductList />
+      <ProductList products={products} />
     </div>
   );
 }
