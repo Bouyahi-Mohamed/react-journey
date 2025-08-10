@@ -1,5 +1,6 @@
 import '../../styles/pages/amazon.css'
-export default function ProductList({ products }) {
+import Produits from '../../data/products.js'
+export default function ProductList({ products = Produits }) {
   let ProductItems = products.map((product) => {
     return (
       <div className="product-container" key={product.id}>
@@ -14,7 +15,7 @@ export default function ProductList({ products }) {
 
           <div className="product-rating-container">
             <img className="product-rating-stars"
-              src={require(`../../images/ratings/rating-${product.rating.stars}.png`)} alt={`${product.rating.stars} stars`} />
+              src={require(`../../images/ratings/rating-${product.rating.stars * 10}.png`)} alt={`${product.rating.stars} stars`} />
             <div className="product-rating-count link-primary">
               {product.rating.count} 
             </div>
@@ -24,20 +25,7 @@ export default function ProductList({ products }) {
             ${(product.priceCents / 100).toFixed(2)}
           </div>
 
-          <div className="product-quantity-container">
-            <select>
-              <option selected value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-          </div>
+          
 
           <div className="product-spacer"></div>
 
