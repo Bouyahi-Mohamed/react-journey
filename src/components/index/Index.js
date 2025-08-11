@@ -6,13 +6,19 @@ export default function Index() {
 
   useEffect(() => {
     // fetch data
-    fetch('https://supersimplebackend.dev/products')
-      .then(response => response.json())
+    fetch('http://localhost:5000/products')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then(data => {
         setProducts(data);
       })
       .catch(error => {
         console.error('Error fetching products:', error);
+        setProducts([]);
       });
   }, []);
 

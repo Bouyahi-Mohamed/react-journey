@@ -1,6 +1,6 @@
 import '../../styles/pages/amazon.css'
-import Produits from '../../data/products.js'
-export default function ProductList({ products = Produits }) {
+import localproduct from '../../data/products.js'
+export default function ProductList({ products = localproduct }) {
   let ProductItems = products.map((product) => {
     return (
       <div className="product-container" key={product.id}>
