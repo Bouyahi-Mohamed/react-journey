@@ -6,7 +6,15 @@ import ProductId from './ProductId';
 export default function Index() {
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState(null);
+  const [btnId, setBtnId] = useState(0);
 
+
+  function handleAddToCart(id) {
+    setBtnId((prevBtnId) =>
+      prevBtnId + 1
+    );
+    alert(`Product with ID ${id} added to cart!`);
+  }
 
   useEffect(() => {
     // fetch data
@@ -48,9 +56,9 @@ export default function Index() {
 
   return (
     <div>
-      <Header />
-      {/* <ProductList products={products} /> */}
-      {product && <ProductId product={product} />}
+      <Header  btnId={btnId} handleAddToCart={handleAddToCart}/>
+      <ProductList products={products} btnId={btnId} handleAddToCart={handleAddToCart} />
+      {/* {product && <ProductId product={product} />} */}
     </div>
   );
 }

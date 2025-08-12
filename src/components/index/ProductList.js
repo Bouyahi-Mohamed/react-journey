@@ -1,6 +1,10 @@
 import '../../styles/pages/amazon.css'
+import { useState } from 'react';
 import localproduct from '../../data/products.js'
-export default function ProductList({ products = localproduct }) {
+export default function ProductList({ products = localproduct, btnId, handleAddToCart }) {
+
+
+
   let ProductItems = products.map((product) => {
     return (
       <div className="product-container" key={product.id}>
@@ -34,7 +38,10 @@ export default function ProductList({ products = localproduct }) {
             Added
           </div>
 
-          <button className="add-to-cart-button button-primary">
+          <button className="add-to-cart-button button-primary"
+          onClick={() => {
+            handleAddToCart(product.id);
+          }}>
             Add to Cart
           </button>
         </div>

@@ -1,5 +1,5 @@
 import '../../styles/shared/amazon-header.css'
-export default function Header() {
+export default function Header({ btnId, handleAddToCart }) {
   return (
     <>
       <div className="amazon-header">
@@ -28,7 +28,7 @@ export default function Header() {
 
         <a className="cart-link header-link" href="checkout.html">
           <img className="cart-icon" src={require('../../images/icons/cart-icon.png')} />
-          <div className="cart-quantity">3</div>
+          <div className="cart-quantity">{btnId}</div>
           <div className="cart-text">Cart</div>
         </a>
       </div>
