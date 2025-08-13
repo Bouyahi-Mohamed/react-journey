@@ -1,0 +1,29 @@
+.header {
+  background-color:  #282c34;
+  padding: 20px;
+  color: white;
+}
+
+.header-list {
+  list-style: none;
+  padding: 0;
+}
+
+.header-item {
+  display: inline;
+  margin-right: 20px;
+}
+
+.header-item a {
+  color: white;
+  text-decoration: none;
+}
+
+.header-item a:hover {
+  text-decoration: underline;
+}
+.header-logo {
+  height: 40px;
+  vertical-align: middle;
+  background-color: transparent;
+}

@@ -1,9 +1,8 @@
-
-import '../css/App.css';
-import logo from '../images/logo.svg';
+import "../css/App.css";
+import logo from "../images/logo.svg";
 function ReactPage() {
   return (
-  <div className="App">
+    <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
