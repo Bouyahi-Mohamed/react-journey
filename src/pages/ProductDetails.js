@@ -1,15 +1,13 @@
-import "../../styles/pages/produit.css";
+import "../styles/pages/produit.css";
 export default function ProductId({ product }) {
   return (
     <div className="container" key={product.id}>
       <div className="product-image">
-        <img src={require(`../../${product.image}`)} alt={product.name} />
+        <img src={require(`../${product.image}`)} alt={product.name} />
       </div>
       <div className="product-details">
         <img
-          src={require(`../../images/ratings/rating-${
-            product.rating.stars * 10
-          }.png`)}
+          src={require(`../images/ratings/rating-${product.rating.stars * 10}.png`)}
           alt={`${product.rating.stars} stars`}
         />
         <h1>{product.name}</h1>

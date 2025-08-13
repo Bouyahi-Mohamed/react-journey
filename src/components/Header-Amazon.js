@@ -1,36 +1,37 @@
-import '../../styles/shared/amazon-header.css'
+import '../styles/shared/amazon-header.css'
+import {Link} from 'react-router-dom';
 export default function Header({ btnId, handleAddToCart }) {
   return (
     <>
       <div className="amazon-header">
       <div className="amazon-header-left-section">
-        <a href="amazon.html" className="header-link">
+        <Link to="/" className="header-link">
           <img className="amazon-logo"
-                src={require('../../images/amazon-logo-white.png')} alt="Amazon Logo" />
+                src={require('../images/amazon-logo-white.png')} alt="Amazon Logo" />
           <img className="amazon-mobile-logo"
-            src={require('../../images/amazon-mobile-logo-white.png')} alt="Amazon Mobile Logo" />
-        </a>
+            src={require('../images/amazon-mobile-logo-white.png')} alt="Amazon Mobile Logo" />
+        </Link>
       </div>
 
       <div className="amazon-header-middle-section">
         <input className="search-bar" type="text" placeholder="Search" />
 
         <button className="search-button">
-          <img className="search-icon" src={require('../../images/icons/search-icon.png')} />
+          <img className="search-icon" src={require('../images/icons/search-icon.png')} />
         </button>
       </div>
 
       <div className="amazon-header-right-section">
-        <a className="orders-link header-link" href="orders.html">
+        <Link className="orders-link header-link" to="/order">
           <span className="returns-text">Returns</span>
           <span className="orders-text">& Orders</span>
-        </a>
+        </Link>
 
-        <a className="cart-link header-link" href="checkout.html">
-          <img className="cart-icon" src={require('../../images/icons/cart-icon.png')} />
+        <Link className="cart-link header-link" to="/checkout">
+          <img className="cart-icon" src={require('../images/icons/cart-icon.png')} />
           <div className="cart-quantity">{btnId}</div>
           <div className="cart-text">Cart</div>
-        </a>
+        </Link>
       </div>
     </div>
     </>

@@ -1,7 +1,7 @@
 import { useEffect,useState } from 'react';
-import Header from './Header-Amazon';
-import ProductList from './ProductList';
-import ProductId from './ProductId';
+import Header from '../components/Header-Amazon';
+import ProductList from '../components/ProductList';
+import ProductId from './ProductDetails';
 
 export default function Index() {
   const [products, setProducts] = useState([]);
@@ -58,7 +58,7 @@ export default function Index() {
     <div>
       <Header  btnId={btnId} handleAddToCart={handleAddToCart}/>
       <ProductList products={products} btnId={btnId} handleAddToCart={handleAddToCart} />
-      {/* {product && <ProductId product={product} />} */}
+      
     </div>
   );
 }

@@ -1,6 +1,6 @@
-import '../../styles/pages/amazon.css'
+import '../styles/pages/amazon.css'
 import { useState } from 'react';
-import localproduct from '../../data/products.js'
+import localproduct from '../data/products.js'
 export default function ProductList({ products = localproduct, btnId, handleAddToCart }) {
 
 
@@ -10,7 +10,7 @@ export default function ProductList({ products = localproduct, btnId, handleAddT
       <div className="product-container" key={product.id}>
           <div className="product-image-container">
             <img className="product-image"
-              src={require(`../../${product.image}`)} alt={product.name} />
+              src={require(`../${product.image}`)} alt={product.name} />
           </div>
 
           <div className="product-name limit-text-to-2-lines">
@@ -19,7 +19,7 @@ export default function ProductList({ products = localproduct, btnId, handleAddT
 
           <div className="product-rating-container">
             <img className="product-rating-stars"
-              src={require(`../../images/ratings/rating-${product.rating.stars * 10}.png`)} alt={`${product.rating.stars} stars`} />
+              src={require(`../images/ratings/rating-${product.rating.stars * 10}.png`)} alt={`${product.rating.stars} stars`} />
             <div className="product-rating-count link-primary">
               {product.rating.count} 
             </div>
@@ -34,10 +34,10 @@ export default function ProductList({ products = localproduct, btnId, handleAddT
           <div className="product-spacer"></div>
 
           <div className="added-to-cart">
-            <img src="images/icons/checkmark.png" />
+            <img src={require("../images/icons/checkmark.png")} alt="Added to cart" />
             Added
           </div>
-
+        
           <button className="add-to-cart-button button-primary"
           onClick={() => {
             handleAddToCart(product.id);
