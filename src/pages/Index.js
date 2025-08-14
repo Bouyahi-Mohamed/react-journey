@@ -1,19 +1,11 @@
 import { useEffect,useState } from 'react';
 import Header from '../components/Header-Amazon';
 import ProductList from '../components/ProductList';
-import ProductId from './ProductDetails';
 
 export default function Index() {
   const [products, setProducts] = useState([]);
-  const [btnId, setBtnId] = useState(0);
 
 
-  function handleAddToCart(id) {
-    setBtnId((prevBtnId) =>
-      prevBtnId + 1
-    );
-    alert(`Product with ID ${id} added to cart!`);
-  }
 
   useEffect(() => {
     // fetch data
@@ -36,9 +28,8 @@ export default function Index() {
 
   return (
     <div>
-      <Header  btnId={btnId} handleAddToCart={handleAddToCart}/>
-      <ProductList products={products} btnId={btnId} handleAddToCart={handleAddToCart} />
-      
+      <Header />
+      <ProductList products={products} />
     </div>
   );
 }

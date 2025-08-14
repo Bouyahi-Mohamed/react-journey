@@ -1,6 +1,10 @@
 import '../styles/shared/amazon-header.css'
 import {Link} from 'react-router-dom';
-export default function Header({ btnId, handleAddToCart }) {
+import {useContext} from 'react';
+import nbCartContext from '../context/contextProduit';
+export default function Header() {
+  const {nbCart, setNbCart} = useContext(nbCartContext);
+
   return (
     <>
       <div className="amazon-header">
@@ -29,7 +33,7 @@ export default function Header({ btnId, handleAddToCart }) {
 
         <Link className="cart-link header-link" to="/checkout">
           <img className="cart-icon" src={require('../images/icons/cart-icon.png')} />
-          <div className="cart-quantity">{btnId}</div>
+          <div className="cart-quantity">{nbCart}</div>
           <div className="cart-text">Cart</div>
         </Link>
       </div>

@@ -2,9 +2,10 @@ import '../styles/pages/amazon.css'
 import { useState } from 'react';
 import localproduct from '../data/products.js'
 import { Link } from 'react-router-dom';
-export default function ProductList({ products = localproduct, btnId, handleAddToCart }) {
-
-
+import { useContext } from 'react';
+import nbCartContext from '../context/contextProduit';
+export default function ProductList({ products = localproduct }) {
+  const {nbCart, setNbCart} = useContext(nbCartContext);
 
   let ProductItems = products.map((product) => {
     return (
@@ -42,7 +43,7 @@ export default function ProductList({ products = localproduct, btnId, handleAddT
         
           <button className="add-to-cart-button button-primary"
           onClick={() => {
-            handleAddToCart(product.id);
+            setNbCart((e) => e + 1);
           }}>
             Add to Cart
           </button>
