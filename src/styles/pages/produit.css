@@ -92,3 +92,17 @@
 .product-rating-count .review-count {
   flex: 1;
 }
+
+.product-details-page {
+  position: relative;
+}
+
+.product-details-page .close-button {
+  position: absolute;
+  color: red;
+  background-color: #eee;
+  top: -5px;
+  right: 120px;
+  font-size: 18px;
+  cursor: pointer;
+}

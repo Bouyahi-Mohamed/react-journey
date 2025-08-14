@@ -1,6 +1,22 @@
 import "../styles/pages/produit.css";
-export default function ProductId({ product }) {
-  return (
+import localproduct from "../data/products.js";
+import { Link, useParams } from 'react-router-dom';
+
+export default function ProductDetails() {
+
+  const { id } = useParams();
+  // Find the product by id
+  const product = localproduct.find((prod) => prod.id === id);
+
+  return (<div className="product-details-page">
+    {/* start Close Button */}
+    <Link to="/" className="back-button">
+      <div className="close-button">
+        <i class="fa-solid fa-circle-xmark fa-2xl"></i>
+      </div>
+    </Link>
+    {/* end Close Button */}
+
     <div className="container" key={product.id}>
       <div className="product-image">
         <img src={require(`../${product.image}`)} alt={product.name} />
@@ -32,5 +48,6 @@ export default function ProductId({ product }) {
         </div>
       </div>
     </div>
-  );
+   
+  </div>);
 }

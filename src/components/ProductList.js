@@ -1,6 +1,7 @@
 import '../styles/pages/amazon.css'
 import { useState } from 'react';
 import localproduct from '../data/products.js'
+import { Link } from 'react-router-dom';
 export default function ProductList({ products = localproduct, btnId, handleAddToCart }) {
 
 
@@ -8,11 +9,12 @@ export default function ProductList({ products = localproduct, btnId, handleAddT
   let ProductItems = products.map((product) => {
     return (
       <div className="product-container" key={product.id}>
+        <Link to={`/product/${product.id}`}>
           <div className="product-image-container">
             <img className="product-image"
               src={require(`../${product.image}`)} alt={product.name} />
           </div>
-
+        </Link>
           <div className="product-name limit-text-to-2-lines">
             {product.name}
           </div>
