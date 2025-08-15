@@ -1,4 +1,4 @@
-import '../styles/pages/amazon.css'
+import '../styles/pages/index.css'
 import { useState } from 'react';
 import localproduct from '../data/products.js'
 import { Link } from 'react-router-dom';

@@ -2,7 +2,7 @@ import "../styles/pages/produit.css";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect,useContext } from "react";
 import nbCartContext from '../context/contextProduit';
-import Header from "../components/Header-Amazon";
+import Header from "../components/Header-1";
 
 export default function ProductDetails() {
   const [product, setProduct] = useState(null);

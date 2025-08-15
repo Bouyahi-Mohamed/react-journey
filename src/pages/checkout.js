@@ -1,8 +1,11 @@
+import Header2 from "../components/Header-2";
+import CheckoutList from "../components/Checkout-list";
+
 export default function Checkout() {
   return (
     <div>
-      <h1>Checkout</h1>
-      {/* Add your checkout form or components here */}
+      <Header2 />
+      <CheckoutList />
     </div>
   );
 }
