@@ -16,12 +16,12 @@ const DemoPaper = styled(Box)(() => ({
   backgroundColor: 'black',
 }));
 
-export default function InputText() {
+export default function InputText({ value, result }) {
   return (
     <Stack direction="row" alignItems="flex-end" justifyContent="center" >
       <DemoPaper  variant="elevation">
-        <label style={{ color: 'grey', fontSize: '24px' }}>8x6</label>
-        <label style={{ color: 'lightgray', fontSize: '48px' }}>64</label>
+        <label style={{ color: 'grey', fontSize: '24px' }}>{value||'0'}</label>
+        <label style={{ color: 'lightgray', fontSize: '48px' }}>{result||"0"}</label>
       </DemoPaper>
     </Stack>
   );
