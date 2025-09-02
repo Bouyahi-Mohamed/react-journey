@@ -1,9 +1,42 @@
 import styles from "../styles/pages/checkout/checkout.module.css";
+import { useState } from "react";
 export default function CheckoutList({ carts }) {
+
+  const today = new Date();
+  // Manage delivery option per cart item
+  const [selectedDeliveryOptions, setSelectedDeliveryOptions] = useState(
+    carts.reduce((acc, cart) => {
+      acc[cart.id] = { id: 1, day: today.toLocaleDateString("en-GB"), price: "FREE Shipping" };
+      return acc;
+    }, {})
+  );
+
+  const deliveryOptions = [
+    { id: 1, day: today.toLocaleDateString("en-US", {
+  weekday: "long",   
+  month: "long",     
+  day: "numeric"     
+}), price: "FREE Shipping" },
+    { id: 2, day: new Date(new Date().setDate(today.getDate() + 4)).toLocaleDateString("en-US", {
+  weekday: "long",   
+  month: "long",     
+  day: "numeric"     
+}), price: "$4.99 - Shipping" },
+    { id: 3, day: new Date(new Date().setDate(today.getDate() + 7)).toLocaleDateString("en-US", {
+  weekday: "long",   
+  month: "long",     
+  day: "numeric"     
+}), price: "$9.99 - Shipping" }
+  ];
+
   let cartItems = carts.map((cart) => (
-    <div className={styles["cart-item-container"]}>
+    <div className={styles["cart-item-container"]} key={cart.id}>
       <div className={styles["delivery-date"]}>
-        Delivery date: Tuesday, June 21
+       Delivery date: {selectedDeliveryOptions[cart.id]?.day || today.toLocaleDateString("en-US", {
+  weekday: "long",
+  month: "long",
+  day: "numeric"
+})}
       </div>
       <div className={styles["cart-item-details-grid"]}>
         <img
@@ -36,52 +69,31 @@ export default function CheckoutList({ carts }) {
           <div className={styles["delivery-options-title"]}>
             Choose a delivery option:
           </div>
-          <div className={styles["delivery-option"]}>
-            <input
-              type="radio"
-              defaultChecked
-              className={styles["delivery-option-input"]}
-              name="delivery-option-1"
-            />
-            <div>
-              <div className={styles["delivery-option-date"]}>
-                Tuesday, June 21
-              </div>
-              <div className={styles["delivery-option-price"]}>
-                FREE Shipping
-              </div>
-            </div>
-          </div>
-          <div className={styles["delivery-option"]}>
-            <input
-              type="radio"
-              className={styles["delivery-option-input"]}
-              name="delivery-option-1"
-            />
-            <div>
-              <div className={styles["delivery-option-date"]}>
-                Wednesday, June 15
-              </div>
-              <div className={styles["delivery-option-price"]}>
-                $4.99 - Shipping
+          {deliveryOptions.map((option) => (
+            <div className={styles["delivery-option"]} key={option.id}>
+              <input
+                type="radio"
+                className={styles["delivery-option-input"]}
+                name={`delivery-option-${cart.id}`}
+                value={option.id}
+                checked={selectedDeliveryOptions[cart.id]?.id === option.id}
+                onChange={() =>
+                  setSelectedDeliveryOptions((prev) => ({
+                    ...prev,
+                    [cart.id]: option
+                  }))
+                }
+              />
+              <div>
+                <div className={styles["delivery-option-date"]}>
+                  {option.day}
+                </div>
+                <div className={styles["delivery-option-price"]}>
+                  {option.price}
+                </div>
               </div>
             </div>
-          </div>
-          <div className={styles["delivery-option"]}>
-            <input
-              type="radio"
-              className={styles["delivery-option-input"]}
-              name="delivery-option-1"
-            />
-            <div>
-              <div className={styles["delivery-option-date"]}>
-                Monday, June 13
-              </div>
-              <div className={styles["delivery-option-price"]}>
-                $9.99 - Shipping
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
